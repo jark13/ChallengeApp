@@ -1,11 +1,11 @@
-﻿string name = "Ewa";
+﻿//Zadanie - dzień 3
+string name = "Ewa";
 bool kobieta = true;
 int age = 33;
 
 string message1 = "Kobieta poniżej 30 lat";
 string message2 = "Ewa, lat 33";
 string message3 = "Niepełnoletni męzczyzna";
-
 
 
 if ((age < 30) & (kobieta))
