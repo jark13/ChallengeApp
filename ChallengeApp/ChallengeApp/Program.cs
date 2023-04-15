@@ -1,4 +1,4 @@
-﻿//Zadanie - dzień 3
+﻿//Zadanie - dzień 4
 string name = "Ewa";
 bool kobieta = true;
 int age = 33;
