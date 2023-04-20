@@ -31,7 +31,6 @@ employee3.AddScore(3);
 var name = Employee.GameName;
 //var pi = Math.PI;
 
-
 List<Employee> employees = new List<Employee>()
 {
     employee1, employee2, employee3
