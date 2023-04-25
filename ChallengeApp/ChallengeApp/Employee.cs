@@ -1,12 +1,11 @@
 ﻿namespace ChallengeApp
 {
-    //public class User
     public class Employee
     {
         public static string GameName = "Diablo";
 
         private List<int> scores = new List<int>();
-               
+
         //public Employee(string login, string password)
         public Employee(string firstName, string secondName, string age)
         {
@@ -33,13 +32,14 @@
         {
             //       this.score = this.score + number;
             this.scores.Add(number);
+            //this.scores.Add(-1);
         }
-         
+
         //public void WriteNameAndScondName()
         //{
-            //       this.score = this.score + number;
-            //Console.WriteLine(FirstName + " " + SecondName);
-            //Console.WriteLine($"{FirstName} {SecondName} {Age}");
+        //       this.score = this.score + number;
+        //Console.WriteLine(FirstName + " " + SecondName);
+        //Console.WriteLine($"{FirstName} {SecondName} {Age}");
         //}
     }
 
