@@ -52,24 +52,60 @@ namespace ChallengeApp.Tests
         }
 
         [Test]
-        public void WhenUserColletsPoints_ShouldReturnCorrectSumAsResult()
+        public void WhenUserColletsPoints_ShouldReturnCorrectMin()
         {
             //arrange
-            var user = new Employee("Agnieszka", "Nowak", "25");
-            user.AddScore(25);
-            user.AddScore(5);
-            user.AddScore(-10);
-            user.AddScore(-10);
-            user.AddScore(-10);
+            var emplyee = new EmployeeNew("Anna", "Nowak");
+            emplyee.AddGrade(25);
+            emplyee.AddGrade(3);
+            emplyee.AddGrade(10);
+            emplyee.AddGrade(15);
+            emplyee.AddGrade(7);
 
             //act
-            var result = user.Result;
+            //var statistics = user.AddGrade;
+
+            var statistics = emplyee.GetStatistics();
 
             //assert
-            Assert.AreEqual(0, result);
-
+            Assert.AreEqual(3, statistics.Min);
         }
 
+        [Test]
+        public void WhenUserColletsPoints_ShouldReturnCorrectAverages()
+        {
+            //arrange
+            var emplyee = new EmployeeNew("Anna", "Nowak");
+            emplyee.AddGrade(25);
+            emplyee.AddGrade(3);
+            emplyee.AddGrade(10);
+            emplyee.AddGrade(15);
+            emplyee.AddGrade(7);
+
+            //act
+            var statistics = emplyee.GetStatistics();
+
+            //assert
+            Assert.AreEqual(12, statistics.Average);
+        }
+
+        [Test]
+        public void WhenUserColletsPoints_ShouldReturnCorrectMax()
+        {
+            //arrange
+            var emplyee = new EmployeeNew("Anna", "Nowak");
+            emplyee.AddGrade(25);
+            emplyee.AddGrade(3);
+            emplyee.AddGrade(10);
+            emplyee.AddGrade(15);
+            emplyee.AddGrade(7);
+
+            //act
+            var statistics = emplyee.GetStatistics();
+
+            //assert
+             Assert.AreEqual(25, statistics.Max);
+        }
 
 
         private Employee GetUser(string firstName, string secondName, string age)
