@@ -56,7 +56,8 @@
 using ChallengeApp;
 
 var employee = new EmployeeNew("Marek", "Kowalski");
-employee.AddGrade(2);
+employee.AddGrade("Marek");
+employee.AddGrade("2000");
 employee.AddGrade(2);
 employee.AddGrade(6);
 

@@ -55,17 +55,17 @@ namespace ChallengeApp.Tests
         public void WhenUserColletsPoints_ShouldReturnCorrectMin()
         {
             //arrange
-            var emplyee = new EmployeeNew("Anna", "Nowak");
-            emplyee.AddGrade(25);
-            emplyee.AddGrade(3);
-            emplyee.AddGrade(10);
-            emplyee.AddGrade(15);
-            emplyee.AddGrade(7);
+            var employee = new EmployeeNew("Anna", "Nowak");
+            employee.AddGrade(25);
+            employee.AddGrade(3);
+            employee.AddGrade(10);
+            employee.AddGrade(15);
+            employee.AddGrade(7);
 
             //act
             //var statistics = user.AddGrade;
 
-            var statistics = emplyee.GetStatistics();
+            var statistics = employee.GetStatistics();
 
             //assert
             Assert.AreEqual(3, statistics.Min);
@@ -76,17 +76,21 @@ namespace ChallengeApp.Tests
         {
             //arrange
             var emplyee = new EmployeeNew("Anna", "Nowak");
-            emplyee.AddGrade(25);
-            emplyee.AddGrade(3);
-            emplyee.AddGrade(10);
-            emplyee.AddGrade(15);
-            emplyee.AddGrade(7);
+            // emplyee.AddGrade(25);
+            //emplyee.AddGrade(3);
+            //emplyee.AddGrade(10);
+            //emplyee.AddGrade(15);
+            //emplyee.AddGrade(7);
+            emplyee.AddGrade(2);
+            emplyee.AddGrade(2);
+            emplyee.AddGrade(6);
 
             //act
             var statistics = emplyee.GetStatistics();
 
             //assert
-            Assert.AreEqual(12, statistics.Average);
+            //Assert.AreEqual(12, statistics.Average);
+            Assert.AreEqual(Math.Round(3.33, 2), Math.Round(statistics.Average, 2));
         }
 
         [Test]
