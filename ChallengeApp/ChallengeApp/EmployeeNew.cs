@@ -27,7 +27,6 @@ namespace ChallengeApp
             }
         }
 
-
         public void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
@@ -39,8 +38,6 @@ namespace ChallengeApp
                 Console.WriteLine("String is not float");
             }
         }
-
-
         public void AddGrade(byte grade)
         {
             this.AddGrade((float)grade);
