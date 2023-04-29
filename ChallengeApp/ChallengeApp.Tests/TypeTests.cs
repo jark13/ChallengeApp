@@ -111,6 +111,59 @@ namespace ChallengeApp.Tests
              Assert.AreEqual(25, statistics.Max);
         }
 
+        [Test]
+        public void WhenUserExpressedByLetterColletsPoints_ShouldReturnCorrectMax()
+        {
+            //arrange
+            var emplyee = new EmployeeNew("Anna", "Nowak");
+            emplyee.AddGrade('a');
+            emplyee.AddGrade('b');
+            emplyee.AddGrade('c');
+            emplyee.AddGrade('d');
+            emplyee.AddGrade('e');
+
+            //act
+            var statistics = emplyee.GetStatistics();
+
+            //assert
+            Assert.AreEqual(100, statistics.Max);
+        }
+
+        [Test]
+        public void WhenUserExpressedByLetterColletsPoints_ShouldReturnCorrectMin()
+        {
+            //arrange
+            var emplyee = new EmployeeNew("Anna", "Nowak");
+            emplyee.AddGrade('A');
+            emplyee.AddGrade('B');
+            emplyee.AddGrade('C');
+            emplyee.AddGrade('D');
+            emplyee.AddGrade('E');
+
+            //act
+            var statistics = emplyee.GetStatistics();
+
+            //assert
+            Assert.AreEqual(20, statistics.Min);
+        }
+
+        public void WhenUserExpressedByLetterColletsPoints_ShouldReturnCorrectAverages()
+        {
+            //arrange
+            var emplyee = new EmployeeNew("Anna", "Nowak");
+            emplyee.AddGrade('A');
+            emplyee.AddGrade('B');
+            emplyee.AddGrade('C');
+            emplyee.AddGrade('D');
+            emplyee.AddGrade('E');
+
+            //act
+            var statistics = emplyee.GetStatistics();
+
+            //assert
+            Assert.AreEqual(60, statistics.Average);
+        }
+
 
         private Employee GetUser(string firstName, string secondName, string age)
         {
