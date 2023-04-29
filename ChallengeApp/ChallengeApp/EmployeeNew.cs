@@ -55,7 +55,7 @@ namespace ChallengeApp
             float gradeAsFloat = (float)grade;
             this.AddGrade(gradeAsFloat);
         }
-
+                
         public void AddGrade(int grade)
         {
             float gradeAsFloat = grade;
