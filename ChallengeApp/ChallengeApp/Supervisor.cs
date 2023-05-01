@@ -20,12 +20,7 @@ namespace ChallengeApp
         {
             throw new NotImplementedException();
         }
-
-        //public void AddGrade(string grade)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
+        
         public void AddGrade(byte grade)
         {
             throw new NotImplementedException();
