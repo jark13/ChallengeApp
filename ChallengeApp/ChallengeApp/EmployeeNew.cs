@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Reflection;
 
 namespace ChallengeApp
 {
-    public class EmployeeNew
+    public class EmployeeNew : Person
     {
         private const char sex = 'M';
 
         private List<float> grades = new List<float>();
-
-        public EmployeeNew(string name, string surname)
+              
+        public EmployeeNew(string name, string surname, string sex)
+            : base(name, surname, sex)       
         {
-            this.Name = name;
             this.Surname = surname;
         }
 
         public EmployeeNew()
+            : this("no name", "no surname", "no sex")
         {
-            
         }
 
-        public string Name { get; private set; }
-
+   
         public string Surname { get; private set; }
 
         public void AddGrade(float grade)
@@ -72,27 +72,6 @@ namespace ChallengeApp
 
         public void AddGrade(char grade)
         {
-            //if(grade == 'A' || grade == 'a')
-            //{
-            //    this.grades.Add(100);
-            //}
-            //else if (grade == 'B')
-            //{
-            //    this.grades.Add(80);
-            //}
-            //else if (grade == 'C')
-            //{
-            //    this.grades.Add(60);
-            //}
-            //else if (grade == 'D')
-            //{
-            //    this.grades.Add(40);
-            //}
-            //else if (grade == 'E')
-            //{
-            //    this.grades.Add(20);
-            //}
-
             switch (grade)
             {
                 case 'A':
@@ -124,7 +103,6 @@ namespace ChallengeApp
         public Statistics GetStatistics()
         {
             const int superValue = 5;
-            //superValue = 9;
             var statistics = new Statistics();
             statistics.Average = 0;
             statistics.Max = float.MinValue;
