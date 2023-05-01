@@ -6,6 +6,7 @@ Console.WriteLine();
 
 var employee = new EmployeeNew();
 //var employee = new EmployeeNew("Marek", "Nowak");
+
 while (true)
 {
     Console.WriteLine("Podaj kolejną ocenę pracownika (jeśli koniec, nacisnij 'q/Q') :");
@@ -14,8 +15,15 @@ while (true)
     {
         break;
     }
-    employee.AddGrade(input);
 
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exception catched: {e.Message}");
+    }
 }
 
 var statistics = employee.GetStatistics();
