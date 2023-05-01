@@ -5,16 +5,16 @@ using System.Reflection;
 
 namespace ChallengeApp
 {
-    public class EmployeeNew : Person
+    public class EmployeeNew : IEmployee
     {
-        private const char sex = 'M';
-
-        private List<float> grades = new List<float>();
+       private List<float> grades = new List<float>();
               
         public EmployeeNew(string name, string surname, string sex)
-            : base(name, surname, sex)       
+    
         {
+            this.Name = surname;
             this.Surname = surname;
+            this.Sex = sex;
         }
 
         public EmployeeNew()
@@ -22,8 +22,11 @@ namespace ChallengeApp
         {
         }
 
-   
+        public string Name { get; private set; }
+
         public string Surname { get; private set; }
+
+        public string Sex { get; private set; }
 
         public void AddGrade(float grade)
         {          
@@ -97,7 +100,6 @@ namespace ChallengeApp
                 default:
                     throw new Exception("Wrong Letter");
             }
-
         }
 
         public Statistics GetStatistics()
