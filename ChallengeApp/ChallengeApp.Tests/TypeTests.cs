@@ -55,7 +55,7 @@ namespace ChallengeApp.Tests
         public void WhenUserColletsPoints_ShouldReturnCorrectMin()
         {
             //arrange
-            var employee = new EmployeeNew("Anna", "Nowak");
+            var employee = new EmployeeNew("Anna", "Nowak", "Woman");
             employee.AddGrade(25);
             employee.AddGrade(3);
             employee.AddGrade(10);
@@ -75,7 +75,7 @@ namespace ChallengeApp.Tests
         public void WhenUserColletsPoints_ShouldReturnCorrectAverages()
         {
             //arrange
-            var emplyee = new EmployeeNew("Anna", "Nowak");
+            var emplyee = new EmployeeNew("Anna", "Nowak", "Fimale");
             // emplyee.AddGrade(25);
             //emplyee.AddGrade(3);
             //emplyee.AddGrade(10);
@@ -97,7 +97,7 @@ namespace ChallengeApp.Tests
         public void WhenUserColletsPoints_ShouldReturnCorrectMax()
         {
             //arrange
-            var emplyee = new EmployeeNew("Anna", "Nowak");
+            var emplyee = new EmployeeNew("Anna", "Nowak", "Fimale");
             emplyee.AddGrade(25);
             emplyee.AddGrade(3);
             emplyee.AddGrade(10);
@@ -115,7 +115,7 @@ namespace ChallengeApp.Tests
         public void WhenUserExpressedByLetterColletsPoints_ShouldReturnCorrectMax()
         {
             //arrange
-            var emplyee = new EmployeeNew("Anna", "Nowak");
+            var emplyee = new EmployeeNew("Anna", "Nowak", "Fimale");
             emplyee.AddGrade('a');
             emplyee.AddGrade('b');
             emplyee.AddGrade('c');
@@ -133,7 +133,7 @@ namespace ChallengeApp.Tests
         public void WhenUserExpressedByLetterColletsPoints_ShouldReturnCorrectMin()
         {
             //arrange
-            var emplyee = new EmployeeNew("Anna", "Nowak");
+            var emplyee = new EmployeeNew("Anna", "Nowak", "Fimale");
             emplyee.AddGrade('A');
             emplyee.AddGrade('B');
             emplyee.AddGrade('C');
@@ -150,7 +150,7 @@ namespace ChallengeApp.Tests
         public void WhenUserExpressedByLetterColletsPoints_ShouldReturnCorrectAverages()
         {
             //arrange
-            var emplyee = new EmployeeNew("Anna", "Nowak");
+            var emplyee = new EmployeeNew("Anna", "Nowak", "Fimale");
             emplyee.AddGrade('A');
             emplyee.AddGrade('B');
             emplyee.AddGrade('C');

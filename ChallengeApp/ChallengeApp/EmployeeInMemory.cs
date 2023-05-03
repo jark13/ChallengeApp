@@ -1,79 +1,68 @@
-﻿using System;
-using System.Diagnostics;
-using System.Diagnostics.Metrics;
-using System.Reflection;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
-    public class EmployeeNew : IEmployee
+    public  class EmployeeInMemory : EmployeeBase
     {
-       private List<float> grades = new List<float>();
-              
-        public EmployeeNew(string name, string surname, string sex)
-    
-        {
-            this.Name = surname;
-            this.Surname = surname;
-            this.Sex = sex;
-        }
+        private List<float> grades = new List<float>();
 
-        public EmployeeNew()
-            : this("no name", "no surname", "no sex")
+        public EmployeeInMemory(string name, string surname, string sex) 
+            : base(name, surname, sex)
         {
         }
+        //public override void SayHello()
+        //{
+        //    Console.WriteLine("Hi !!!");
+        //    base.SayHello();
+        //}
 
-        public string Name { get; private set; }
 
-        public string Surname { get; private set; }
 
-        public string Sex { get; private set; }
-
-        public void AddGrade(float grade)
-        {          
+        public override void AddGrade(float grade)
+        {
             if (grade >= 0 && grade <= 100)
             {
-                this.grades.Add(grade);
+                grades.Add(grade);
             }
             else
             {
-                throw new Exception("Invalid grade value");
+                throw new Exception("Value out of range");
             }
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
-                this.AddGrade(result);
+                AddGrade(result);
             }
             else
             {
                 throw new Exception("String is not float");
             }
         }
-        public void AddGrade(byte grade)
+
+        public override void AddGrade(byte grade)
         {
-            this.AddGrade((float)grade);
+            AddGrade((float)grade);
         }
 
-        public void AddGrade(long grade)
+        public override void AddGrade(long grade)
         {
-            this.AddGrade((float)grade);
+            AddGrade((float)grade);
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             float gradeAsFloat = (float)grade;
-            this.AddGrade(gradeAsFloat);
-        }
-                
-        public void AddGrade(int grade)
-        {
-            float gradeAsFloat = grade;
-            this.AddGrade(gradeAsFloat);
+            AddGrade(gradeAsFloat);
         }
 
-        public void AddGrade(char grade)
+        public override void AddGrade(int grade)
+        {
+            float gradeAsFloat = grade;
+            AddGrade(gradeAsFloat);
+        }
+
+        public override void AddGrade(char grade)
         {
             switch (grade)
             {
@@ -102,14 +91,13 @@ namespace ChallengeApp
             }
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
-            //const int superValue = 5;
             var statistics = new Statistics();
             statistics.Average = 0;
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
-                      
+
             foreach (var grade in this.grades)
             {
                 statistics.Max = Math.Max(statistics.Max, grade);
@@ -121,7 +109,7 @@ namespace ChallengeApp
 
             switch (statistics.Average)
             {
-                case var average when average >= 80:            
+                case var average when average >= 80:
                     statistics.AverageLetter = 'A';
                     break;
                 case var average when average >= 60:
@@ -142,25 +130,29 @@ namespace ChallengeApp
             return statistics;
         }
 
-        public Statistics GetStatisticsWithForEach()
+        public override Statistics GetStatisticsWithDoWhile()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
-     
-            foreach (var grade in this.grades)
+
+            var index = 0;
+
+            do
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade;
-            }
+                statistics.Max = Math.Max(statistics.Max, grades[index]);
+                statistics.Min = Math.Min(statistics.Min, grades[index]);
+                statistics.Average += grades[index];
+                index++;
+            } while (index < this.grades.Count);
+
             statistics.Average /= this.grades.Count;
 
             return statistics;
         }
 
-        public Statistics GetStatisticsWithFor()
+        public override Statistics GetStatisticsWithFor()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -178,29 +170,25 @@ namespace ChallengeApp
             return statistics;
         }
 
-        public Statistics GetStatisticsWithDoWhile()
+        public override Statistics GetStatisticsWithForEach()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
 
-            var index = 0;
-
-            do
-            {                
-                statistics.Max = Math.Max(statistics.Max, grades[index]);
-                statistics.Min = Math.Min(statistics.Min, grades[index]);
-                statistics.Average += grades[index];
-                index++;
-            } while (index < this.grades.Count);
-
+            foreach (var grade in this.grades)
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
+            }
             statistics.Average /= this.grades.Count;
 
             return statistics;
         }
 
-        public Statistics GetStatisticsWithWhile()
+        public override Statistics GetStatisticsWithWhile()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
