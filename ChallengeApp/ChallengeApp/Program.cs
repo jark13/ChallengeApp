@@ -23,11 +23,6 @@ void EmployeeGradeAdded(object sender, EventArgs args)
 
 //employee.AddGrade(0.6f);
 
-//employee.SayHello();
-//var employee = new EmployeeNew();
-//var employee = new EmployeeNew("Marek", "Nowak");
-
-
 while (true)
 {
     Console.WriteLine("Podaj kolejną ocenę pracownika (jeśli koniec, nacisnij 'q/Q') :");
