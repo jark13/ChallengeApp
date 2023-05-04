@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-
-namespace ChallengeApp
-{
+﻿namespace ChallengeApp
+{    
     public class EmployeeInFile : EmployeeBase
     {
         private const string fileName = "grades.txt";
+
+        public event GradeAddedDelegate GradeAdded;
         public EmployeeInFile(string name, string surname, string sex)
             : base(name, surname, sex)
         {
@@ -18,6 +17,11 @@ namespace ChallengeApp
                 if (grade >= 0 && grade <= 100)
                 {
                     writer.WriteLine(grade);
+
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
                 }
                 else
                 {

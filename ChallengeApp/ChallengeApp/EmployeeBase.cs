@@ -2,6 +2,9 @@
 {
     public abstract class EmployeeBase : IEmployee
     {
+
+        public delegate void GradeAddedDelegate(object sender, EventArgs args);
+       
         public EmployeeBase(string name, string surname, string sex)
         {
             this.Name = name;
@@ -15,12 +18,7 @@
         public string Surname { get; private set; }
 
         public string Sex { get; private set; }
-
-        //public virtual void SayHello()
-        //{
-        //    Console.WriteLine($"Hello! I am {Name} {Surname}");
-        //}
-
+                
         public abstract void AddGrade(float grade);
 
         public abstract void AddGrade(char grade);

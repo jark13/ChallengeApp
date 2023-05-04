@@ -1,26 +1,27 @@
 ﻿namespace ChallengeApp
 {
-    public  class EmployeeInMemory : EmployeeBase
+    public class EmployeeInMemory : EmployeeBase
     {
+        
+        public event GradeAddedDelegate GradeAdded;
+
         private List<float> grades = new List<float>();
 
-        public EmployeeInMemory(string name, string surname, string sex) 
-            : base(name, surname, sex)
+        public EmployeeInMemory(string name, string surname, string sex)
+    : base(name, surname, sex)
         {
         }
-        //public override void SayHello()
-        //{
-        //    Console.WriteLine("Hi !!!");
-        //    base.SayHello();
-        //}
-
-
 
         public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
-                grades.Add(grade);
+                this.grades.Add(grade);
+
+                if(GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
@@ -33,6 +34,14 @@
             if (float.TryParse(grade, out float result))
             {
                 AddGrade(result);
+            }
+            //else
+            //{
+            //    throw new Exception("String is not float");
+            //}
+            else if (char.TryParse(grade, out char charResult))
+            {
+                this.AddGrade(charResult);
             }
             else
             {
@@ -69,6 +78,7 @@
                 case 'A':
                 case 'a':
                     this.grades.Add(100);
+                    //AddGrade(100);
                     break;
                 case 'B':
                 case 'b':
