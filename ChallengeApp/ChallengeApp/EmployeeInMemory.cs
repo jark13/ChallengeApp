@@ -10,7 +10,23 @@
         public EmployeeInMemory(string name, string surname, string sex)
     : base(name, surname, sex)
         {
+            this.Name = surname;
+            this.Surname = surname;
+            this.Sex = sex;
         }
+
+
+        //public EmployeeNew()
+        //    : this("no name", "no surname", "no sex")
+        //{
+        //    return;
+        //}
+
+        public string Name { get; private set; }
+
+        public string Surname { get; private set; }
+
+        public string Sex { get; private set; }
 
         public override void AddGrade(float grade)
         {
