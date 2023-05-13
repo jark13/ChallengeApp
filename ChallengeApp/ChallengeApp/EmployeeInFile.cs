@@ -1,9 +1,9 @@
 ﻿namespace ChallengeApp
-{    
+{
     public class EmployeeInFile : EmployeeBase
     {
         private const string fileName = "grades.txt";
-
+             
         public event GradeAddedDelegate GradeAdded;
         public EmployeeInFile(string name, string surname, string sex)
             : base(name, surname, sex)
@@ -159,67 +159,12 @@
         private Statistics CountStatistics(List<float> grades)
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
+
             foreach (var grade in grades)
             {
-                statistics.Max = Math.Max(statistics.Max, grade);
-                statistics.Min = Math.Min(statistics.Min, grade);
-                statistics.Average += grade;
-            }
-
-            statistics.Average /= grades.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
+                statistics.AddGrade(grade);
             }
             return statistics;
-        }
-
-        public override Statistics GetStatisticsWithDoWhile()
-        {
-            {
-                var gradesFromFile = this.ReadGradesFromFile();
-                var result = this.CountStatistics(gradesFromFile);
-                return result;
-            }
-        }
-
-        public override Statistics GetStatisticsWithFor()
-        {
-            var gradesFromFile = this.ReadGradesFromFile();
-            var result = this.CountStatistics(gradesFromFile);
-            return result;
-        }
-
-        public override Statistics GetStatisticsWithForEach()
-        {
-            var gradesFromFile = this.ReadGradesFromFile();
-            var result = this.CountStatistics(gradesFromFile);
-            return result;
-        }
-
-        public override Statistics GetStatisticsWithWhile()
-        {
-            var gradesFromFile = this.ReadGradesFromFile();
-            var result = this.CountStatistics(gradesFromFile);
-            return result;
         }
     }
 }
